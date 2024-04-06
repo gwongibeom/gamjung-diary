@@ -1,35 +1,40 @@
 import './App.css'
+import { useReducer } from 'react'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import Diary from './pages/Diary'
 import Home from './pages/Home'
 import New from './pages/New'
+import Edit from './pages/Edit'
 import NotFound from './pages/NotFound'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
-import { getEmotionImage } from './util/get-emotion-image'
+
+const mockData = [
+  {
+    id: 1,
+    createdDate: new Date().getTime(),
+    emotionId: 1,
+    content: '1내용',
+  },
+  {
+    id: 2,
+    createdDate: new Date().getTime(),
+    emotionId: 2,
+    content: '2내용',
+  },
+]
+
+function reducer(state, action) {
+  return state
+}
 
 function App() {
-  const nav = useNavigate()
-
-  const onClickButton = () => {
-    nav('/new')
-  }
-
+  const [data, dispatch] = useReducer(reducer, mockData)
   return (
     <>
-      <div>
-        <img src={getEmotionImage(1)} />
-        <img src={getEmotionImage(2)} />
-        <img src={getEmotionImage(3)} />
-      </div>
-      <div>
-        <Link to={'/'}>home</Link>
-        <Link to={'/new'}>new</Link>
-        <Link to={'/diary'}>diary</Link>
-      </div>
-      <button onClick={onClickButton}>new로 이동</button>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/new' element={<New />} />
         <Route path='/diary/:id' element={<Diary />} />
+        <Route path='/edit/:id' element={<Edit />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
