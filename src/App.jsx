@@ -22,7 +22,7 @@ const mockData = [
   },
   {
     id: 3,
-    createdDate: new Date('2024-03-18').getTime(),
+    createdDate: new Date('2024-02-18').getTime(),
     emotionId: 3,
     content: '3내용',
   },

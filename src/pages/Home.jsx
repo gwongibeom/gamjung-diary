@@ -33,7 +33,6 @@ const Home = () => {
   const [pivotDate, setPivotDate] = useState(new Date())
 
   const MonthyData = getMonthyData(pivotDate, data)
-  console.log(MonthyData)
 
   const onIncraseMonth = () => {
     setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1))
@@ -50,7 +49,7 @@ const Home = () => {
         leftChild={<Button text={'<'} onClick={onDecraseMonth} />}
         rightChild={<Button text={'>'} onClick={onIncraseMonth} />}
       />
-      <DiaryList />
+      <DiaryList data={MonthyData} />
     </div>
   )
 }
