@@ -40,6 +40,7 @@ const Editor = ({ initData, onSubmit }) => {
 
   const onSubmitButtonClick = () => {
     onSubmit(input)
+    nav('/')
   }
 
   return (
